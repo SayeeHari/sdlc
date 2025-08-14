@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Evidence Summary</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='control_evidence.css') }}">
+    <meta http-equiv="refresh" content="5;url={{ url_for('auditee_dashboard') }}">
+</head>
+<body>
+<div class="ce-container">
+    <h1>Summary</h1>
+    <p>Total Controls: {{ total }}</p>
+    <p>Compliant Controls: {{ compliant }}</p>
+    <p>Non-Compliant Controls: {{ non_compliant }}</p>
+    <p>You will be logged out automatically in 5 seconds.</p>
+</div>
+</body>
+</html>

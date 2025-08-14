@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditee Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="reg-container">
+        <h2>Auditee Registration</h2>
+
+        <form method="POST">
+            <label for="auditee_name">Auditee Name:</label>
+            <input type="text" name="auditee_name" required>
+
+            <label for="organization_name">Organization Name:</label>
+            <input type="text" name="organization_name" required>
+
+            <label for="date_of_audit">Date of Audit:</label>
+            <input type="date" name="date_of_audit" required>
+
+            <label for="mobile_number">Mobile Number:</label>
+            <input type="tel" name="mobile_number" pattern="[0-9]{10}" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required>
+
+            <label for="org_type">Type of Organization:</label>
+            <select name="org_type" required>
+                <option value="">-- Select --</option>
+                <option>Startup</option>
+                <option>SME</option>
+                <option>Enterprise</option>
+                <option>Government</option>
+                <option>Other</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="login-link">Already registered? <a href="/login">Login</a></p>
+    </div>
+</body>
+</html>

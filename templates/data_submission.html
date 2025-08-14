@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Submission - Auditee</title>
+
+    <style>
+        /* ===== Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== Body Styling ===== */
+        .datasubmission-page {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+
+        /* ===== Title ===== */
+        .ds-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            text-align: center;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 170px;
+        }
+
+        /* ===== Form ===== */
+        .ds-form {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: absolute;
+            top: 300px;
+        }
+
+        /* Labels */
+        .ds-form label {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        /* Inputs and Textarea */
+        .ds-form input,
+        .ds-form textarea {
+            padding: 10px;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .ds-form input:focus,
+        .ds-form textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        /* File Input */
+        .ds-form input[type="file"] {
+            background: #f9f9f9;
+        }
+
+        /* Buttons */
+        .ds-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ds-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #1f6391);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="datasubmission-page">
+        <h1 class="ds-title">Data Submission</h1>
+
+        {% if not valid_id %}
+        <form class="ds-form" method="POST">
+            <label for="next_step_id">Enter Next Step ID:</label>
+            <input type="text" name="next_step_id" id="next_step_id" required>
+            <button type="submit" class="ds-btn">Verify</button>
+        </form>
+        {% else %}
+        <form class="ds-form" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="next_step_id" value="{{ next_step_id }}">
+
+            <label>Upload Asset List (Excel):</label>
+            <input type="file" name="asset_list" accept=".xls,.xlsx" required>
+
+            <label>Upload Checklist (Excel):</label>
+            <input type="file" name="checklist" accept=".xls,.xlsx" required>
+
+            <label>Number of Auditees Involved:</label>
+            <input type="number" id="auditee_count" name="auditee_count" min="1" max="20" onchange="showAuditeeFields()" required>
+
+            <label>Name of the Auditees:</label>
+            <textarea name="auditee_names" rows="2" required></textarea>
+
+            <button type="submit" name="final_submit" class="ds-btn">Submit Data</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>
+

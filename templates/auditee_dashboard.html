@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditee Dashboard</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body.car {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .car .container {
+            max-width: 900px;
+            margin: 10%;
+            padding: 20px;
+            position: absolute;
+            left: 250px;
+            top: 100px;
+        }
+
+        /* ===== HEADER ===== */
+        .car header {
+            text-align: center;
+            padding: 25px 0;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        
+        .logout-btn {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        .car header h1 {
+            font-size: 2rem;
+        }
+
+        /* ===== INTRO SECTION ===== */
+        .car .intro {
+            background: white;
+            padding: 25px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* ===== BUTTONS SECTION ===== */
+        .car .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .car .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .car .btn-primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .car .btn-primary:hover {
+            background: linear-gradient(135deg, #2980b9, #1f6391);
+            transform: translateY(-2px);
+        }
+
+        .car .btn-secondary {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+
+        .car .btn-secondary:hover {
+            background: linear-gradient(135deg, #27ae60, #1e8449);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .car footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 15px;
+            color: #555;
+        }
+    </style>
+</head>
+<body class="car">
+    <div class="container">
+        <header>
+            <h1>Welcome, Auditee!</h1>
+             <a href="{{ url_for('login') }}" class="logout-btn">🚪 Logout</a>
+        </header>
+
+        <section class="intro">
+            <p>
+                Thank you for being part of the audit process.  
+                We appreciate your cooperation and commitment to maintaining the highest security and compliance standards.  
+                If you have any questions or need assistance, feel free to reach out to our team.  
+            </p>
+            <p>
+                For further enquiries, click the buttons below to proceed with your submissions.
+            </p>
+        </section>
+
+        <section class="buttons">
+            <a href="{{ url_for('data_submission') }}" class="btn btn-primary">📄 Data Submission</a>
+            <a href="{{ url_for('control_evidence') }}" class="btn btn-secondary">🔒 Control Evidence Submission</a>
+        </section>
+
+        <footer>
+            <p>📞 Contact: +91-9000000009 | 📧 Email: support@auditcompany.com</p>
+        </footer>
+    </div>
+</body>
+</html>
+

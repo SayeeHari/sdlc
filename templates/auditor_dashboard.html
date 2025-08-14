@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auditor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="mango-body">
+    <div class="dashboard-card">
+        <h1 class="apple-title">Auditor Dashboard</h1>
+
+        <div class="banana-stats">
+            <p>Total Registered Auditees: <strong>{{ total_auditees }}</strong></p>
+            <p>Auditees Submitted Data: <strong>{{ submitted_data }}</strong></p>
+            <p>Auditees Submitted Control Evidence: <strong>{{ submitted_evidence }}</strong></p>
+            <p>Compliant Controls: <strong>{{ compliant_count }}</strong></p>
+            <p>Non-Compliant Controls: <strong>{{ non_compliant_count }}</strong></p>
+        </div>
+
+        <a href="{{ url_for('download_all_evidence') }}" class="grape-btn">Download All Evidence PDF</a>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Evidence Submission</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='control_evidence.css') }}">
+</head>
+<style>
+    /* control_evidence.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    margin: 0;
+    padding: 0;
+}
+
+.ce-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 40px auto;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+fieldset {
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    padding: 15px 20px;
+    background-color: #f9fbff;
+}
+
+legend {
+    font-weight: bold;
+    color: #3498db;
+    font-size: 16px;
+}
+
+label {
+    font-size: 14px;
+    color: #333;
+    margin-right: 10px;
+}
+
+input[type="radio"] {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+input[type="file"] {
+    display: block;
+    margin-top: 8px;
+    padding: 4px;
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #217dbb;
+}
+
+@media (max-width: 600px) {
+    .ce-container {
+        padding: 20px;
+    }
+    legend {
+        font-size: 14px;
+    }
+    button[type="submit"] {
+        font-size: 14px;
+    }
+}
+
+</style>
+<body>
+<div class="ce-container">
+    <h1>Control Evidence Submission</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="next_step_id" value="{{ next_step_id }}">
+
+        {% for i in range(1, controls|length + 1) %}
+                <fieldset>
+                    <legend>{{ controls[i-1] }}</legend>
+
+                    <input type="radio" id="control_{{i}}_compliant" name="control_{{i}}" value="compliant" required>
+                    <label for="control_{{i}}_compliant">Compliant</label>
+
+                    <input type="radio" id="control_{{i}}_noncompliant" name="control_{{i}}" value="noncompliant" required>
+                    <label for="control_{{i}}_noncompliant">Non-Compliant</label>
+
+                    <label for="control_{{i}}_file"><br>Upload Proof of Compliance (required if Compliant):</label>
+                    <input type="file" id="control_{{i}}_file" name="poc_{{i}}" accept="image/*">
+                </fieldset>
+            {% endfor %}
+
+        <button type="submit">Submit Controls</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Submitted Evidence</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 90%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #3498db;
+        color: white;
+        font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e6f7ff;
+    }
+
+    a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .no-file {
+        color: #888;
+        font-style: italic;
+    }
+</style>
+</head>
+<body>
+
+<h1>Submitted Evidence</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Auditee Name</th>
+            <th>Control Name</th>
+            <th>Status</th>
+            <th>Evidence</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in evidence %}
+        <tr>
+            <td>{{ row[1] }}</td> <!-- auditee_name -->
+            <td>{{ row[2] }}</td> <!-- control_name -->
+            <td>{{ row[3] }}</td> <!-- status -->
+            <td>
+                {% if row[4] %}
+                    {% set file_ext = row[4].split('.')[-1] | lower %}
+                    
+                    {% if file_ext in ['jpg', 'jpeg', 'png', 'gif'] %}
+                        <a href="{{ url_for('tester_download_file', filename=row[4]) }}" target="_blank">
+                            <img src="{{ url_for('uploaded_file', filename=row[4]) }}" 
+                                 alt="Evidence Image" 
+                                 style="max-width: 100px; max-height: 100px; border: 1px solid #ccc;">
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('tester_download_file', filename=row[4]) }}">
+                            Download {{ file_ext | upper }} File
+                        </a>
+                    {% endif %}
+                {% else %}
+                    No file
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="login-box">
+    <h1 class="login-title">Login</h1>
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="flash {{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('login') }}" method="POST" class="login-form">
+      <label for="email" class="login-label">Email ID</label>
+      <input type="email" id="email" name="email" class="login-input" placeholder="Enter your email" required>
+
+      <label for="password" class="login-label">Password</label>
+      <input type="password" id="password" name="password" class="login-input" placeholder="Enter your password" required>
+
+      <label for="role" class="login-label">Select Role</label>
+      <select id="role" name="role" class="login-select" required>
+        <option value="">-- Choose Role --</option>
+        <option value="auditee">Auditee</option>
+        <option value="auditor">Auditor</option>
+        <option value="tester">Tester</option>
+      </select>
+
+      <button type="submit" class="login-button">Login</button>
+    </form>
+  </main>
+</body>
+</html>
+

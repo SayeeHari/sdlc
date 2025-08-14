@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tester Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7fc;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+
+    .dashboard {
+        width: 90%;
+        margin: 0 auto 30px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .dashboard p {
+        font-size: 16px;
+        margin: 8px 0;
+    }
+
+    .dashboard a {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 8px 15px;
+        background-color: #3498db;
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+
+    .dashboard a:hover {
+        background-color: #217dbb;
+    }
+
+    table {
+        width: 90%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #3498db;
+        color: white;
+        font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e6f7ff;
+    }
+
+    a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .no-file {
+        color: #888;
+        font-style: italic;
+    }
+</style>
+</head>
+<body>
+
+<h1>Tester Dashboard</h1>
+
+<div class="dashboard">
+    <p>Total Auditees: {{ total_auditees }}</p>
+    <p>Auditees Submitted Data: {{ submitted_data }}</p>
+    <p>Auditees Submitted Evidence: {{ submitted_evidence }}</p>
+    <a href="{{ url_for('tester_view_evidence') }}">View Submitted Evidence</a>
+</div>
+
+</body>
+</html>
+
+

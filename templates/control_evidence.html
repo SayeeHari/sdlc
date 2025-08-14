@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Evidence - Step ID</title>
+
+    <style>
+        /* ===== Reset ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== Body Styling ===== */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa,#c3cfe2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== Container ===== */
+        .ce-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* ===== Title ===== */
+        .ce-container h1 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: #006064;
+        }
+
+        /* ===== Labels ===== */
+        .ce-container label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color:  black;
+        }
+
+        /* ===== Input ===== */
+        .ce-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .ce-container input[type="text"]:focus {
+            border-color: #c3cfe2;
+            outline: none;
+        }
+
+        /* ===== Button ===== */
+        .ce-container button {
+            background: linear-gradient(135deg, #00acc1, #3498db);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ce-container button:hover {
+            background: linear-gradient(135deg, #00838f, #006064);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+<div class="ce-container">
+    <h1>Enter Next Step ID</h1>
+    <form method="POST">
+        <label for="next_step_id">Next Step ID:</label>
+        <input type="text" name="next_step_id" required>
+        <button type="submit">Proceed</button>
+    </form>
+</div>
+</body>
+</html>
+
